@@ -65,10 +65,47 @@ def hello():
 
 
 def other(some_def_func):
-    print("Some  other code rubns here")
+    print("Some  other code runs here")
     print(some_def_func())
 
 
 other(hello)
+
+# %%
+other(hello)
+# %%
+# creating a decorator
+
+
+def new_decorator(original_func):
+
+    def wrap_func():
+        print("Some extra code before..")
+        original_func()
+        print("SOme extra code after...")
+    return wrap_func
+# %%
+
+
+def func_needs_decorator():
+    print("I want to  be decorated")
+
+
+func_needs_decorator()  # %%
+
+# %%
+decorated_func = new_decorator(func_needs_decorator)
+# %%
+decorated_func()
+# %%
+
+
+@new_decorator
+def func_needs_decorator():
+    print("I need to be decorated")
+
+
+# %%
+func_needs_decorator()
 
 # %%
